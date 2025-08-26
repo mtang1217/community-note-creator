@@ -6,7 +6,7 @@ An intelligent Google Chrome extension that harnesses the power of Google's Gemi
 
 This tool is perfect for quickly gauging the sentiment and key discussion points on YouTube, Instagram, and Reddit.
 
-![Demo GIF showing the extension generating a summary on a social media site](https://via.placeholder.com/800x400.png?text=Project+Demo+GIF+Here)
+![Image](https://github.com/user-attachments/assets/c03f588b-459c-42bc-a75c-720f36db347c)
 
 ---
 
