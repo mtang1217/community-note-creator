@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Community Summary Overlay",
+  "version": "0.1.0",
+  "description": "Shows a consensus-style summary of top comments for YouTube, YouTube Shorts, Reddit, and Instagram Reels.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/",
+    "https://www.youtube.com/*",
+    "https://m.youtube.com/*",
+    "https://www.reddit.com/*",
+    "https://old.reddit.com/*",
+    "https://www.instagram.com/*",
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*",
+        "https://www.reddit.com/*",
+        "https://old.reddit.com/*",
+        "https://www.instagram.com/*"
+      ],
+      "js": [
+        "config.js",
+        "util.js",
+        "summarizer.js",
+        "adapters/youtube.js",
+        "adapters/reddit.js",
+        "adapters/instagram.js",
+        "content.js"
+      ],
+      "css": [
+        "overlay.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/KDH.jpg",
+    "48": "icons/KDH.jpg",
+    "128": "icons/KDH.jpg"
+  },
+  "action": {
+    "default_title": "Community Summary Overlay"
+  }
+}

@@ -1,0 +1,6 @@
+config.js
+bin/
+obj/
+*.user
+*.suo
+
