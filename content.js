@@ -1,14 +1,23 @@
-// content.js
+// content.js - SIMPLIFIED VERSION
+
+// This IIFE (Immediately Invoked Function Expression) runs as soon as the file is injected.
 (function () {
+  // A check to prevent the script from running multiple times if there's an overlap
+  if (window.hasCommunityNoteScriptRun) {
+    return;
+  }
+  window.hasCommunityNoteScriptRun = true;
+
+  console.log("[Content] Script injected and running.");
+
   try {
     const panel = window.createPanel && window.createPanel();
-    let currentUrl = location.href;
-
+    
+    // The core logic function remains the same.
     async function updateSummary() {
       window.setPanelState && window.setPanelState("loading...");
       try {
         let comments = [];
-
         if (window.YTAdapter?.isYouTube?.()) {
           comments = await window.YTAdapter.extractYTComments();
         } else if (window.RedditAdapter?.isReddit?.()) {
@@ -17,13 +26,7 @@
           comments = await window.IGAdapter.extractIGComments();
         }
 
-        let result = window.summarizeComments
-          ? window.summarizeComments(comments, 5)
-          : "No comments to summarize.";
-
-        // handle both sync and async summarizers
-        if (result && typeof result.then === "function") result = await result;
-
+        let result = await window.summarizeComments(comments, 5);
         const el = document.getElementById("cn-summary");
         if (el) el.textContent = result || "No comments to summarize.";
       } catch (err) {
@@ -35,25 +38,10 @@
       }
     }
 
-    // react to SPA nav
-    window.onUrlChange && window.onUrlChange(async () => {
-      if (location.href !== currentUrl) {
-        currentUrl = location.href;
-        const el = document.getElementById("cn-summary");
-        if (el) el.textContent = "Loading comments...";
-        await updateSummary();
-      }
-    });
+    // No more listeners for navigation! Just run the function.
+    // We add a small delay to ensure the page's own scripts have finished rendering.
+    setTimeout(updateSummary, 500);
 
-    // manual refresh
-    document.addEventListener("CN_REFRESH", updateSummary);
-
-    // initial
-    if (document.readyState === "complete") {
-      updateSummary();
-    } else {
-      window.addEventListener("load", updateSummary);
-    }
   } catch (e) {
     console.error("[CN] content bootstrap failed:", e);
   }

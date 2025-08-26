@@ -6,7 +6,8 @@
   "permissions": [
     "storage",
     "activeTab",
-    "scripting"
+    "scripting",
+    "webNavigation"
   ],
   "host_permissions": [
     "https://generativelanguage.googleapis.com/",
@@ -20,30 +21,6 @@
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.youtube.com/*",
-        "https://m.youtube.com/*",
-        "https://www.reddit.com/*",
-        "https://old.reddit.com/*",
-        "https://www.instagram.com/*"
-      ],
-      "js": [
-        "config.js",
-        "util.js",
-        "summarizer.js",
-        "adapters/youtube.js",
-        "adapters/reddit.js",
-        "adapters/instagram.js",
-        "content.js"
-      ],
-      "css": [
-        "overlay.css"
-      ],
-      "run_at": "document_idle"
-    }
-  ],
 
   "icons": {
     "48": "icons/icon482.png"
