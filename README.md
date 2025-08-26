@@ -84,12 +84,13 @@ The extension icon should now appear in your Chrome toolbar.
 │   ├── instagram.js
 │   └── ...
 ├── icons/
-│   └── KDH.jpg
-├── scripts/
-│   ├── main.js
-│   └── summarizer.js
+│   └── icon482.png
 ├── config.js
 ├── manifest.json
+├── background.js
+├── util.js
+├── content.js
+├── summarizer.js
 └── README.md
 ```
 
