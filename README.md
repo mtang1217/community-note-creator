@@ -3,14 +3,12 @@ AI Community Notes Summarizer 🚀
 An intelligent Google Chrome extension that harnesses the power of Google's Gemini 1.5 Flash API to summarize comment sections on popular social media platforms. It generates a neutral, "Community Note" style summary from the top comments, helping you understand public opinion without the endless scrolling.
 This tool is perfect for quickly gauging the sentiment and key discussion points on YouTube, Instagram, and Reddit.
 ![alt text](https://via.placeholder.com/800x400.png?text=Project+Demo+GIF+Here)
-
-(A GIF demonstrating the extension's functionality would be highly effective here.)
 ✨ Features
 One-Click Summaries: Generate a concise summary of the most relevant comments with a single click.
 Multi-Platform Support: Fully functional on YouTube, Instagram, and Reddit.
 Powered by Gemini 1.5 Flash: Leverages Google's latest, high-speed AI model to provide context-aware and nuanced summaries.
 Intelligent Fallback: If the AI service is unavailable or an API key is missing, it provides a simple list of the top comments so you never get nothing.
-Privacy-Focused: The extension runs entirely in your browser. Comments are sent directly to the Google Gemini API and are not stored or tracked by us.
+Privacy-Focused: The extension runs entirely in your browser. Comments are sent directly to the Google Gemini API and are not stored or tracked.
 ⚙️ How It Works
 The extension's logic is straightforward but powerful:
 Platform Detection: The extension identifies when you are on a supported page (a YouTube video, Instagram post, or Reddit thread).
@@ -46,7 +44,7 @@ Open Chrome and go to the extensions page: chrome://extensions.
 Turn on the "Developer mode" toggle, usually in the top-right corner.
 Click the "Load unpacked" button.
 Select the entire project folder from your computer.
-The AI Community Notes icon should now appear in your Chrome toolbar, ready for use!
+The extension is now installed but will not have a toolbar icon until you configure the manifest.json (see below).
 🚀 Usage
 Navigate to a page with a comment section on YouTube, Instagram, or Reddit.
 Find the "Generate Community Note" button injected by the extension (typically located near the top of the comment section).
@@ -57,26 +55,26 @@ code
 Code
 .
 ├── adapters/
-│   ├── instagram.js      # Scraper for Instagram
-│   ├── reddit.js         # Scraper for Reddit
-│   └── youtube.js        # Scraper for YouTube
+│   ├── instagram.js
+│   ├── reddit.js
+│   └── youtube.js
 ├── icons/
 │   ├── icon16.png
-│   └── icon48.png
+│   ├── icon48.png
+│   └── icon128.png
 ├── scripts/
-│   ├── main.js           # Main content script that injects UI and orchestrates logic
-│   └── summarizer.js     # Handles API calls to Gemini and contains fallback logic
-├── config.js.example     # API key configuration template
-├── config.js             # Your private API key file (ignored by git)
-├── manifest.json         # Chrome Extension manifest
-└── README.md             # This file
+│   ├── main.js
+│   └── summarizer.js
+├── config.js.example
+├── config.js
+├── manifest.json
+└── README.md
 🤝 Contributing
 We welcome contributions! If you have ideas for improvements or want to add support for new platforms, please follow these steps:
 Fork the repository.
-Create a new branch (git checkout -b feature/add-facebook-support).
-Make your changes.
-Commit your changes (git commit -m 'Add support for Facebook comments').
-Push to the branch (git push origin feature/add-facebook-support).
+Create a new branch (git checkout -b feature/add-new-platform).
+Make your changes and commit them.
+Push to the branch (git push origin feature/add-new-platform).
 Open a Pull Request.
 📄 License
 This project is licensed under the MIT License. See the LICENSE file for more details.
